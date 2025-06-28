@@ -1,4 +1,4 @@
-package dsadailypractice;
+package dsadailypractice.Arrays0;
 
 public class RemoveDuplicatesFromSortedArray {
 
