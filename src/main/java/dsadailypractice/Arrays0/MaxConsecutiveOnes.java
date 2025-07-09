@@ -13,8 +13,8 @@ public class MaxConsecutiveOnes {
             if (nums[i] == 1) {
                 count++;
             } else {
-                count = 0;
                 maxCount = Math.max(count, maxCount);
+                count = 0;
             }
         }
         return Math.max(maxCount, count);
