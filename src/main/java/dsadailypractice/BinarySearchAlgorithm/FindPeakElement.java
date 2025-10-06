@@ -1,22 +1,22 @@
 package dsadailypractice.BinarySearchAlgorithm;
 
-class FindMinimumElementInRotatedSortedArray {
+class FindPeakElement {
     public static void main(String[] args) {
-        System.out.println(findMin(new int[]{4, 5, 6, 7, 0, 1, 2}));
+        System.out.println(findPeakElement(new int[]{1, 2, 1, 3, 5, 6, 4}));
     }
 
-    public static int findMin(int[] nums) {
+    public static int findPeakElement(int[] nums) {
         int l = 0;
         int r = nums.length - 1;
         int m = 0;
         while (l < r) {
             m = l + (r - l) / 2;
-            if (nums[m] > nums[r]) {
+            if (nums[m + 1] > nums[m]) {
                 l = m + 1;
             } else {
                 r = m;
             }
         }
-        return nums[l];
+        return l;
     }
 }
