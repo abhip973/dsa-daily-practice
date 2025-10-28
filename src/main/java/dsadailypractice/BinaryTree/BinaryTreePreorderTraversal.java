@@ -2,6 +2,7 @@ package dsadailypractice.BinaryTree;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 public class BinaryTreePreorderTraversal {
     public class TreeNode {
@@ -34,5 +35,19 @@ public class BinaryTreePreorderTraversal {
         list.add(root.val);
         traversal(root.left, list);
         traversal(root.right, list);
+    }
+
+    public List<Integer> preorderTraversalIterativeApproach(TreeNode root) {
+        List<Integer> list = new ArrayList<>();
+        if (root == null) return list;
+        Stack<TreeNode> stack = new Stack<>();
+        stack.push(root);
+        while (!stack.isEmpty()) {
+            TreeNode curr = stack.pop();
+            list.add(curr.val);
+            if (curr.right != null) stack.push(curr.right);
+            if (curr.left != null) stack.push(curr.left);
+        }
+        return list;
     }
 }
