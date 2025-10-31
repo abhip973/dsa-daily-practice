@@ -54,4 +54,25 @@ public class BinaryTreePostorderTraversal {
         }
         return list;
     }
+
+    public List<Integer> postorderTraversalUsingSingleStackIterativeApproach(TreeNode root) {
+        List<Integer> list = new ArrayList<>();
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode curr = root;
+        TreeNode lv = null;
+        while (!stack.isEmpty() || curr != null) {
+            while (curr != null) {
+                stack.push(curr);
+                curr = curr.left;
+            }
+            TreeNode top = stack.peek();
+            if (top.right != null && top.right != lv) {
+                curr = top.right;
+            } else {
+                list.add(stack.pop().val);
+                lv = top;
+            }
+        }
+        return list;
+    }
 }
