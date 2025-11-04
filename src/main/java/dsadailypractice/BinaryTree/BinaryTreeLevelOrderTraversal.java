@@ -43,4 +43,19 @@ public class BinaryTreeLevelOrderTraversal {
         }
         return list;
     }
+
+    public List<List<Integer>> levelOrderRecursively(TreeNode root) {
+        List<List<Integer>> list = new ArrayList<>();
+        traversal(root, 0, list);
+        return list;
+    }
+
+    public static void traversal(TreeNode node, int level, List<List<Integer>> list) {
+        if (node == null) return;
+        if (level == list.size())
+            list.add(new ArrayList<>());
+        list.get(level).add(node.val);
+        traversal(node.left, level + 1, list);
+        traversal(node.right, level + 1, list);
+    }
 }
