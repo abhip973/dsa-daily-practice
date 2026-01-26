@@ -13,4 +13,22 @@ public class MaximumProductSubarray {
         }
         return max;
     }
+
+    public int maxProductII(int[] nums) {
+        int n = nums.length;
+        int ltr = 1;
+        int rtl = 1;
+        int max = Integer.MIN_VALUE;
+        for (int i = 0; i < n; i++) {
+            ltr = ltr * nums[i];
+            rtl = rtl * nums[n - i - 1];
+            max = Math.max(ltr, Math.max(rtl, max));
+            if (ltr == 0) {
+                ltr = 1;
+            }
+            if (rtl == 0)
+                rtl = 1;
+        }
+        return max;
+    }
 }
