@@ -23,7 +23,7 @@ public class CloneGraph {
         }
     }
 
-    public Node cloneGraph(Node root) {
+    public Node cloneGraphBFS(Node root) {
         if (root == null) return root;
         Queue<Node> q = new LinkedList<>();
         Map<Node, Node> visited = new HashMap<>();
@@ -38,6 +38,26 @@ public class CloneGraph {
                     visited.put(n, new Node(n.val));
                 }
                 clonedCurr.neighbors.add(visited.get(n));
+            }
+        }
+        return visited.get(root);
+    }
+
+    public Node cloneGraphDFS(Node root) {
+        if (root == null) return root;
+        Stack<Node> stack = new Stack<>();
+        Map<Node, Node> visited = new HashMap<>();
+        stack.push(root);
+        visited.put(root, new Node(root.val));
+        while (!stack.isEmpty()) {
+            Node curr = stack.pop();
+            Node cloneCurr = visited.get(curr);
+            for (Node n : curr.neighbors) {
+                if (!visited.containsKey(n)) {
+                    visited.put(n, new Node(n.val));
+                    stack.push(n);
+                }
+                cloneCurr.neighbors.add(visited.get(n));
             }
         }
         return visited.get(root);
