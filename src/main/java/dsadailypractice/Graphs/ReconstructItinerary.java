@@ -26,7 +26,7 @@ public class ReconstructItinerary {
     public void dfs(String curr) {
         List<String> list = map.get(curr);
         for (int i = 0; list != null && i < list.size(); ) {
-            String from = list.removeFirst();
+            String from = list.remove(0);
             dfs(from);
         }
         ans.add(curr);
