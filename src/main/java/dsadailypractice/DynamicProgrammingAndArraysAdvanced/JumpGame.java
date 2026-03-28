@@ -16,4 +16,13 @@ public class JumpGame {
         map[start] = ans;
         return ans;
     }
+
+    public boolean canJumpGreedyApproach(int[] nums) {
+        int longest = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (i > longest) return false;
+            longest = Math.max(longest, i + nums[i]);
+        }
+        return true;
+    }
 }
